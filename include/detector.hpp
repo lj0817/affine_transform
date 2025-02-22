@@ -47,7 +47,6 @@ namespace rm_auto_aim
         std::vector<Armor> matchLights(const std::vector<Light> & lights);
 
         // For debug usage
-        //cv::Mat getAllNumbersImage();
         void drawResults(cv::Mat & img);
 
         int binary_thres;
@@ -55,7 +54,6 @@ namespace rm_auto_aim
         LightParams l;
         ArmorParams a;
 
-       // std::unique_ptr<NumberClassifier> classifier;
         cv::Mat binary_img;
         void initDetector();
 

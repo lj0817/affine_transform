@@ -65,8 +65,7 @@ namespace rm_auto_aim
         // Number part
         cv::Mat number_img;
         std::string number;
-       // float confidence;
-        //std::string classfication_result;
+
     };
 
 }  // namespace rm_auto_aim

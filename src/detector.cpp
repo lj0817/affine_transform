@@ -150,13 +150,11 @@ namespace rm_auto_aim
     std::vector<Armor> Detector::matchLights(const std::vector<Light> & lights)
     {
         std::vector<Armor> armors;
-        //this->debug_armors.data.clear();
 
         // Loop all the pairing of lights
         for (auto light_1 = lights.begin(); light_1 != lights.end(); light_1++) {
             for (auto light_2 = light_1 + 1; light_2 != lights.end(); light_2++) {
 
-                // if (light_1->color != detect_color || light_2->color != detect_color) continue;
                 if(std::abs((light_1->top.x -light_2->top.x) - (light_1->bottom.x-light_2->bottom.x)) > 3)
                 {
                     continue;
@@ -171,14 +169,6 @@ namespace rm_auto_aim
                     auto armor = Armor(*light_1, *light_2);
                     armor.type = type;
                     armors.emplace_back(armor);
-
-                    //std::cout<<"armors numer: "<<armors.size()<<std::endl;
-
-                    /* if (armors.empty()) {
-                        std::cout << "armors is empty" << std::endl;
-                    } else {
-                        std::cout << "armors isnt empty" << std::endl;
-                    }*/
 
                 }
             }
@@ -196,8 +186,6 @@ namespace rm_auto_aim
         auto bounding_rect = cv::boundingRect(points);
 
         for (const auto & test_light : lights) {
-
-            //std::cout<<"containlight ing"<<std::endl;
 
             if (test_light.center == light_1.center || test_light.center == light_2.center) continue;
 
@@ -251,8 +239,6 @@ namespace rm_auto_aim
         for (const auto & light : lights_) {
             cv::circle(img, light.top, 3, cv::Scalar(0, 255, 255), 2);
             cv::circle(img, light.bottom, 3, cv::Scalar(0, 255, 255), 21);
-           //auto line_color = light.color == RED ? cv::Scalar(255, 255, 0) : cv::Scalar(255, 0, 255);
-            //cv::line(img, light.top, light.bottom, line_color, 1);
             cv::line(img, light.top, light.bottom, (0,0,255), 1);
         }
 
